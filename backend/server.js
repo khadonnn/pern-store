@@ -13,10 +13,11 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use(helmet());
-app.use(morgan("dev"));
+app.use(helmet());//security middleware by setting various HTTP headers
 
-app.get("/api/products", productRoutes);
+app.use(morgan("dev"));//log request
+app.use(express.static("favicon"));
+app.use("/api/products", productRoutes);
 
 async function initDB() {
     try {
@@ -33,7 +34,8 @@ async function initDB() {
         console.log("Error initDB", error);
     }
 }
-initDB();
-app.listen(process.env.PORT || 8080, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
+initDB().then(() => {
+    app.listen(process.env.PORT || 8080, () => {
+        console.log(`Server is running on port ${process.env.PORT}`);
+    })
 })
