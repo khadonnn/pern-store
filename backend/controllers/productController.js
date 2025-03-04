@@ -41,7 +41,7 @@ export const getProduct = async (req, res) => {
 export const updateProduct = async (req, res) => {
   const { id } = req.params;
   const { name, image, price } = req.body;
-  if (!name || !image || !price)
+  if (!name && !image && !price)
     return res
       .status(400)
       .json({ success: false, error: "Missing required fields" });
