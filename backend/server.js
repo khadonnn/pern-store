@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 //routes
 import productRoutes from "./routes/productRoutes.js";
 import { sql } from "./config/db.js";
-
+import { aj } from "./lib/arcjet.js";
 dotenv.config();
 const app = express();
 
