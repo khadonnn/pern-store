@@ -1,5 +1,10 @@
 export const THEMES = [
   {
+    name: "bumblebee",
+    label: "Bumblebee",
+    colors: ["#fbbf24", "#f59e0b", "#22c55e"],
+  },
+  {
     name: "pastel",
     label: "Pastel",
     colors: ["#ffd8d8", "#b7e4c7", "#d8b4fe"],

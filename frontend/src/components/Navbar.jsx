@@ -8,7 +8,7 @@ const Navbar = () => {
   // const isHomePage = pathname === "/";
   return (
     <>
-      <nav className="max-w-full fixed top-0 left-1/2 -translate-x-1/2 w-full z-10 px-4 sm:px-6 lg:px-8 py-4 flex">
+      <nav className="max-w-full fixed top-0 left-1/2 -translate-x-1/2 w-full z-10 px-4 sm:px-6 lg:px-8 py-4 flex items-center">
         <div className="flex items-center justify-center md:hidden z-[9999] mr-1">
           <Drawer>
             <li>
@@ -50,7 +50,7 @@ const Navbar = () => {
             {/* Right side controls */}
 
             <div className="flex items-center space-x-4">
-              <button className="text-white/80 hover:text-white transition-colors">
+              <button className="text-base-content/80 hover:text-white transition-colors">
                 <ShoppingCart size={24} />
               </button>
               <div className="dropdown dropdown-end">
@@ -87,7 +87,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="text-white/80 hover:text-white transition-colors ml-1">
+        <div className="text-base-content/80 transition-colors mr-auto">
           <ThemeSelector />
         </div>
       </nav>
