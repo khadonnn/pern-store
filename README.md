@@ -11,8 +11,10 @@ Client: React, Zustand, Axios, TailwindCSS, Daisyui
 
 Server: Node, Express, PostgreSQL from Neon serverless
 
-<h3 align="left">Description :</h3>
+<h3 align="left">Description about project:</h3>
+
 - 😎 This is a basic project with features related to CRUD, RESTful API, and PostgreSQL.
+
 - 🤗 "You can add, edit, delete, and update your products as you want. They can be reset when you click the seed_refresh button."
 <p align="left">
 </p>
