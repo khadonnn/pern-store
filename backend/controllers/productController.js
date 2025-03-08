@@ -5,7 +5,7 @@ export const getProducts = async (req, res) => {
         SELECT * FROM products
         ORDER BY created_at DESC
         `;
-    console.log("products", products);
+    // console.log("products", products);
     res.status(200).json({ success: true, data: products });
   } catch (error) {
     console.log("Error getProducts", error);
@@ -23,7 +23,7 @@ export const createProduct = async (req, res) => {
       await sql`INSERT INTO products (name, image, price) VALUES (${name}, ${image}, ${price}) RETURNING *`;
 
     res.status(201).json({ success: true, data: newProduct[0] });
-  } catch {
+  } catch (error) {
     console.log("Error getProducts", error);
     res.status(500).json({ success: false, message: "Internal server error" });
   }

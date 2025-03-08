@@ -2,17 +2,19 @@ import React from "react";
 
 import { EditIcon, Trash2Icon } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useProductStore } from "../store/useProductStore";
 
 const ProductCard = ({ product }) => {
-  console.log(product);
+  const { deleteProduct } = useProductStore();
+  // console.log(product);
   return (
-    <figure className="w-full max-w-md backdrop-blur-sm bg-white/10 rounded-2xl border border-white/20 overflow-hidden shadow-xl transform  transition-all duration-300">
+    <figure className="w-full max-w-md bg-white/10 rounded-2xl border border-white/20 overflow-hidden shadow-xl transform  transition-all duration-300">
       <div className="p-6">
         <div className="flex justify-between items-start mb-4">
-          <h2 className="text-2xl font-bold text-base-content">
+          <h2 className="text-2xl font-bold text-base-content max-w-[80%]">
             {product.name}
           </h2>
-          <span className="text-xs font-light bg-white/20 text-base-content px-2 py-1 rounded-full">
+          <span className=" text-xs font-light bg-white/20 text-base-content px-2 py-1 rounded-full">
             Limited Edition
           </span>
         </div>
@@ -40,14 +42,13 @@ const ProductCard = ({ product }) => {
           <div className="card-actions justify-end">
             <Link
               to={`/product/${product.id}`}
-              variant="outline"
-              className="bg-white/10 text-base-content border-white/20 hover:bg-white/20 hover:text-white flex items-center  rounded-xl px-4  py-2 transition-colors duration-300"
+              className="bg-white/10 text-base-content border-white/20 hover:bg-base-content transition-colors hover:text-primary flex items-center  rounded-xl px-4  py-2  duration-100"
             >
               <EditIcon size={16} />
             </Link>
             <button
-              variant="outline"
-              className="bg-white/10 text-base-content btn-error border-white/20 hover:bg-white/20 hover:text-white flex items-center rounded-xl px-4  py-2 transition-colors duration-300"
+              onClick={() => deleteProduct(product.id)}
+              className="bg-white/10 text-base-content btn-error border-white/20 hover:bg-white/20 hover:text-white flex items-center rounded-xl px-4  py-2 transition-colors duration-100"
             >
               <Trash2Icon size={16} className="text-error" />
             </button>

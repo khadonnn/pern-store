@@ -1,17 +1,30 @@
 import { PaletteIcon } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { THEMES } from "../constants";
 import { useThemeStore } from "../store/useThemeStore";
 
 const ThemeSelector = () => {
   //zustand state
   const { theme, setTheme } = useThemeStore();
-
   // State kiểm soát dropdown
   const [isOpen, setIsOpen] = useState(false);
+  // Ref cho dropdown
+  const dropdownRef = useRef(null);
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   return (
-    <div className="dropdown dropdown-end border bg-white/10 rounded-full">
+    <div
+      ref={dropdownRef}
+      className="dropdown dropdown-end border bg-white/10 rounded-full"
+    >
       <button
         tabIndex={0}
         onClick={() => setIsOpen(!isOpen)}
@@ -25,7 +38,7 @@ const ThemeSelector = () => {
         <div
           tabIndex={0}
           className="dropdown-content mt-2 p-1 shadow-2xl bg-base-200 rounded-2xl
-            w-48 border border-base-content/10"
+            w-52 border border-base-content/10"
         >
           {THEMES.map((themeOption) => (
             <button

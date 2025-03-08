@@ -1,5 +1,5 @@
 import React from "react";
-import { Palette, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 import ThemeSelector from "./ThemeSelector";
 import Drawer from "./ui/Drawer";
@@ -38,7 +38,7 @@ const Navbar = () => {
                   key={index}
                   className="relative cursor-pointer font-semibold transition-colors hover:text-white group p-1 "
                 >
-                  <span className="font-semibold  bg-clip-text text-transparent bg-gradient-to-r to-primary from-secondary">
+                  <span className="font-semibold  bg-clip-text text-transparent bg-gradient-to-r to-primary from-primary">
                     {item}
                   </span>
                   <span className="absolute -bottom-1 left-1/2 w-0 transition-all h-0.5 bg-gray-200 group-hover:w-3/6"></span>
