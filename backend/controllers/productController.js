@@ -29,13 +29,14 @@ export const getProducts = async (req, res) => {
     // Lấy tổng số sản phẩm để tính số trang
     const totalCount = await sql`SELECT COUNT(*) FROM products`;
     const totalPages = Math.ceil(totalCount[0].count / limit);
-
+    const totalProducts = totalCount[0].count;
     res.status(200).json({
       success: true,
       data: products,
       pagination: {
         currentPage: page,
         totalPages: totalPages,
+        totalProducts: totalProducts,
       },
     });
   } catch (error) {

@@ -1,11 +1,13 @@
 import React from "react";
-import { ShoppingCart } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ShoppingBagIcon } from "lucide-react";
+import { Link, useResolvedPath } from "react-router-dom";
 import ThemeSelector from "./ThemeSelector";
 import Drawer from "./ui/Drawer";
+import { useProductStore } from "../store/useProductStore";
 const Navbar = () => {
-  // const { pathname } = useResolvedPath();
-  // const isHomePage = pathname === "/";
+  const { pathname } = useResolvedPath();
+  const isHomePage = pathname === "/";
+  const { totalProducts } = useProductStore();
   return (
     <>
       <nav className="max-w-full fixed top-0 left-1/2 -translate-x-1/2 w-full z-10 px-4 sm:px-6 lg:px-8 py-4 flex items-center">
@@ -49,42 +51,49 @@ const Navbar = () => {
 
             {/* Right side controls */}
 
-            <div className="flex items-center space-x-4">
-              <button className="text-base-content/80 hover:text-white transition-colors">
-                <ShoppingCart size={24} />
-              </button>
-              <div className="dropdown dropdown-end">
-                <div
-                  tabIndex={0}
-                  role="button"
-                  className="btn btn-ghost btn-circle avatar w-12"
-                >
-                  <div className="w-16 rounded-full hover:scale-105 transition-transform ease-in-out duration-100">
-                    <img
-                      alt="user"
-                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                    />
+            {isHomePage && (
+              <div className="flex items-center space-x-4">
+                <div className="indicator">
+                  <div className="p-2 rounded-full hover:bg-base-200 transition-colors">
+                    <ShoppingBagIcon className="size-5" />
+                    <span className="badge badge-sm badge-primary indicator-item">
+                      {totalProducts}
+                    </span>
                   </div>
                 </div>
-                <ul
-                  tabIndex={0}
-                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-                >
-                  <li>
-                    <a className="justify-between">
-                      Profile
-                      <span className="badge">New</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a>Settings</a>
-                  </li>
-                  <li>
-                    <a>Logout</a>
-                  </li>
-                </ul>
+                <div className="dropdown dropdown-end">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-ghost btn-circle avatar w-12"
+                  >
+                    <div className="w-16 rounded-full hover:scale-105 transition-transform ease-in-out duration-100">
+                      <img
+                        alt="user"
+                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                      />
+                    </div>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                  >
+                    <li>
+                      <a className="justify-between">
+                        Profile
+                        <span className="badge">New</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>Settings</a>
+                    </li>
+                    <li>
+                      <a>Logout</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
         <div className="text-base-content/80 transition-colors mr-auto">

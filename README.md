@@ -1,17 +1,19 @@
-# pern-store
+# PERN STORE
 
 <h1 align="center">Hi 👋, I'm Khadondev</h1>
 <h3 align="center">A passionate frontend developer from VietNam</h3>
 
 - 🔭 The project name: **PERN-Store**
 
-- 👨‍💻 All Tech Stack i use in this project: [Tech Stack](Tech Stack)
+- 👨‍💻 All Tech Stack i use in this project:
 
-Client: React, Zustand, Axios, TailwindCSS
+Client: React, Zustand, Axios, TailwindCSS, Daisyui
 
 Server: Node, Express, PostgreSQL from Neon serverless
 
-<h3 align="left">Connect with me:</h3>
+<h3 align="left">Description :</h3>
+- 👨‍💻 This is : This is a basic project with features related to CRUD, RESTful API, and PostgreSQL.
+- 🤗 "You can add, edit, delete, and update your products as you want. They can be reset when you click the seed_refresh button."
 <p align="left">
 </p>
 

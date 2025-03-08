@@ -2,7 +2,8 @@ import { create } from "zustand";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const BASE_URL = "http://localhost:8080";
+const BASE_URL =
+  import.meta.env.MODE === "development" ? "http://localhost:8080" : "";
 export const useProductStore = create((set, get) => ({
   //product state
   products: [],
@@ -12,6 +13,7 @@ export const useProductStore = create((set, get) => ({
   currentPage: 1, // Lưu trữ trang hiện tại
   totalPages: 1,
   currentProduct: null,
+  totalProducts: 0,
   //form state
   formData: {
     name: "",
@@ -48,6 +50,7 @@ export const useProductStore = create((set, get) => ({
       set({
         products: res.data.data,
         totalPages: res.data.pagination.totalPages,
+        totalProducts: res.data.pagination.totalProducts,
         error: null,
       }); //first data of axios, 2 data in api return
     } catch (error) {
@@ -140,6 +143,7 @@ export const useProductStore = create((set, get) => ({
       set({
         products: res.data.data,
         totalPages: res.data.pagination.totalPages,
+        totalProducts: res.data.pagination.totalProducts,
         error: null,
       });
     } catch (error) {
