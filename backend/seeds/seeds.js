@@ -1,5 +1,8 @@
 import { sql } from "../config/db.js";
-import productsArray from "./products.json" assert { type: "json" };
+import fs from "fs";
+const productsArray = JSON.parse(
+  fs.readFileSync(new URL("./products.json", import.meta.url))
+);
 const productsObject = {};
 productsArray.forEach((product) => {
   productsObject[product.id] = product;
