@@ -1,17 +1,49 @@
 import { sql } from "../config/db.js";
+// export const getProducts = async (req, res) => {
+//   try {
+//     const products = await sql`
+//         SELECT * FROM products
+//         ORDER BY created_at DESC
+//         `;
+//     // console.log("products", products);
+//     res.status(200).json({ success: true, data: products });
+//   } catch (error) {
+//     console.log("Error getProducts", error);
+//     res.status(500).json({ success: false, message: "Internal server error" });
+//   }
+// };
+
 export const getProducts = async (req, res) => {
   try {
+    const page = parseInt(req.query.page) || 1; // Trang mặc định là 1
+    const limit = 6; // Số sản phẩm mỗi trang
+    const offset = (page - 1) * limit;
+
+    // Lấy sản phẩm theo trang
     const products = await sql`
-        SELECT * FROM products
-        ORDER BY created_at DESC
-        `;
-    // console.log("products", products);
-    res.status(200).json({ success: true, data: products });
+      SELECT * FROM products
+      ORDER BY created_at DESC
+      LIMIT ${limit} OFFSET ${offset}
+    `;
+
+    // Lấy tổng số sản phẩm để tính số trang
+    const totalCount = await sql`SELECT COUNT(*) FROM products`;
+    const totalPages = Math.ceil(totalCount[0].count / limit);
+
+    res.status(200).json({
+      success: true,
+      data: products,
+      pagination: {
+        currentPage: page,
+        totalPages: totalPages,
+      },
+    });
   } catch (error) {
-    console.log("Error getProducts", error);
+    console.error("Error getProducts", error);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
+
 export const createProduct = async (req, res) => {
   const { name, image, price } = req.body;
   if (!name || !image || !price)

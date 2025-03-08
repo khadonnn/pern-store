@@ -14,7 +14,7 @@ const ProductCard = ({ product }) => {
           <h2 className="text-2xl font-bold text-base-content max-w-[80%]">
             {product.name}
           </h2>
-          <span className=" text-xs font-light bg-white/20 text-base-content px-2 py-1 rounded-full">
+          <span className=" text-xs font-light bg-white/20 text-base-content px-2 py-1 rounded-full whitespace-nowrap">
             Limited Edition
           </span>
         </div>

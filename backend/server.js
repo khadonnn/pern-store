@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 import productRoutes from "./routes/productRoutes.js";
 import { sql } from "./config/db.js";
 import { aj } from "./lib/arcjet.js";
+import seedDatabase from "./seeds/seeds.js";
 dotenv.config();
 const app = express();
 
@@ -54,6 +55,14 @@ app.use(async (req, res, next) => {
 });
 
 app.use("/api/products", productRoutes);
+app.get("/api/seed", async (req, res) => {
+  try {
+    const result = await seedDatabase();
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
 
 async function initDB() {
   try {
