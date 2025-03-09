@@ -15,6 +15,8 @@ Server: Node, Express, PostgreSQL from Neon serverless
 
 - 😎 This is a basic project with features related to CRUD, RESTful API, and PostgreSQL.
 
+- 🥰 Rate Limiting with Token Bucket Algorithm by Arcjet🚀
+
 - 🤗 "You can add, edit, delete, and update your products as you want. They can be reset when you click the seed_refresh button."
 <p align="left">
 </p>
