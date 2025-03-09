@@ -24,7 +24,7 @@ const Navbar = () => {
             </li>
           </Drawer>
         </div>
-        <div className=" md:max-w-[70%] mx-auto container backdrop-blur-xl bg-white/10 rounded-full border border-white/20 shadow-lg px-6 py-3">
+        <div className=" md:max-w-[70%] mx-auto container backdrop-blur-sm bg-white/10 rounded-full border border-white/20 shadow-lg px-6 py-3 will-change-[backdrop-filter]">
           <div className=" flex items-center justify-center md:justify-between w-full ">
             {/* Logo */}
             <Link to="/" className="hidden md:flex items-center space-x-2">
@@ -40,11 +40,11 @@ const Navbar = () => {
                   key={index}
                   className="relative cursor-pointer font-semibold transition-colors hover:text-white group p-1 "
                 >
-                  <span className="font-semibold  bg-clip-text text-transparent bg-gradient-to-r to-primary from-primary">
+                  <span className="font-semibold  bg-clip-text text-transparent bg-gradient-to-r to-secondary from-secondary">
                     {item}
                   </span>
-                  <span className="absolute -bottom-1 left-1/2 w-0 transition-all h-0.5 bg-gray-200 group-hover:w-3/6"></span>
-                  <span className="absolute -bottom-1 right-1/2 w-0 transition-all h-0.5 bg-gray-200 group-hover:w-3/6"></span>
+                  <span className="absolute -bottom-1 left-1/2 w-0 transition-all h-0.5 bg-primary group-hover:w-3/6"></span>
+                  <span className="absolute -bottom-1 right-1/2 w-0 transition-all h-0.5 bg-primary group-hover:w-3/6"></span>
                 </li>
               ))}
             </ul>

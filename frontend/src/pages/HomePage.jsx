@@ -13,11 +13,12 @@ function HomePage() {
     totalPages,
     error,
     loading,
+    fetchProducts,
     fetchSeedProducts,
   } = useProductStore();
   useEffect(() => {
-    fetchSeedProducts();
-  }, [fetchSeedProducts]);
+    fetchProducts();
+  }, [fetchProducts]);
   // console.log("products :", products);
   return (
     <>
